@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Concept 2: Digital Bars SG — Fixed complete G -->
+  <defs>
+    <linearGradient id="c2grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="c2grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="url(#c2grad)" stroke-width="2" opacity="0.15"/>
+  <!-- S — horizontal bars + verticals forming S shape -->
+  <rect x="32" y="38" width="56" height="12" rx="6" fill="url(#c2grad)" opacity="0.95"/>
+  <rect x="32" y="50" width="12" height="32" rx="6" fill="url(#c2grad)" opacity="0.85"/>
+  <rect x="32" y="82" width="56" height="12" rx="6" fill="url(#c2grad)" opacity="0.95"/>
+  <rect x="76" y="94" width="12" height="24" rx="6" fill="url(#c2grad)" opacity="0.85"/>
+  <rect x="32" y="118" width="56" height="12" rx="6" fill="url(#c2grad)" opacity="0.95"/>
+  <!-- G — complete: top bar, left wall, bottom bar, right wall, crossbar -->
+  <rect x="112" y="38" width="56" height="12" rx="6" fill="url(#c2grad2)" opacity="0.95"/>
+  <rect x="112" y="50" width="12" height="68" rx="6" fill="url(#c2grad2)" opacity="0.85"/>
+  <rect x="112" y="118" width="56" height="12" rx="6" fill="url(#c2grad2)" opacity="0.95"/>
+  <rect x="156" y="82" width="12" height="36" rx="6" fill="url(#c2grad2)" opacity="0.85"/>
+  <rect x="140" y="82" width="28" height="12" rx="6" fill="url(#c2grad2)" opacity="0.8"/>
+  <!-- Connecting accent bar -->
+  <rect x="88" y="76" width="24" height="6" rx="3" fill="#06b6d4" opacity="0.5"/>
+  <!-- Tagline dots -->
+  <circle cx="80" cy="152" r="3" fill="#3b82f6" opacity="0.5"/>
+  <circle cx="100" cy="152" r="3" fill="#6366f1" opacity="0.5"/>
+  <circle cx="120" cy="152" r="3" fill="#06b6d4" opacity="0.5"/>
+</svg>

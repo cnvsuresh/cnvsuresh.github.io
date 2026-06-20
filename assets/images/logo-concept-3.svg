@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Concept 3: Code Brackets Shield — < S . G /> inside a diamond/shield shape -->
+  <defs>
+    <linearGradient id="c3grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="40%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="c3fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <filter id="c3glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Shield shape — rounded diamond -->
+  <path d="M 100,12 L 184,68 C 190,72 192,80 190,88 L 164,168 C 160,178 150,184 140,184 L 60,184 C 50,184 40,178 36,168 L 10,88 C 8,80 10,72 16,68 Z"
+        fill="url(#c3fill)" stroke="url(#c3grad)" stroke-width="2.5"/>
+  <!-- Inner shield line -->
+  <path d="M 100,28 L 172,76 C 176,78 178,84 176,90 L 156,158 C 154,164 148,168 142,168 L 58,168 C 52,168 46,164 44,158 L 24,90 C 22,84 24,78 28,76 Z"
+        fill="none" stroke="url(#c3grad)" stroke-width="1" opacity="0.2"/>
+  <!-- Left bracket < -->
+  <path d="M 48,100 L 32,86 L 48,72" fill="none" stroke="#06b6d4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  <!-- Right bracket /> -->
+  <path d="M 152,72 L 168,86 L 152,100" fill="none" stroke="#06b6d4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  <line x1="156" y1="68" x2="148" y2="104" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <!-- S letter -->
+  <text x="78" y="106" font-family="'Inter','Segoe UI',sans-serif" font-weight="800" font-size="48" fill="url(#c3grad)" filter="url(#c3glow)">S</text>
+  <!-- G letter -->
+  <text x="108" y="106" font-family="'Inter','Segoe UI',sans-serif" font-weight="800" font-size="48" fill="url(#c3grad)" filter="url(#c3glow)">G</text>
+  <!-- Dot separator -->
+  <circle cx="106" cy="100" r="3" fill="#06b6d4"/>
+  <!-- Bottom accent line -->
+  <line x1="70" y1="130" x2="130" y2="130" stroke="url(#c3grad)" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <!-- Bottom label -->
+  <text x="100" y="152" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="500" font-size="9" fill="#64748b" letter-spacing="3">SURESH GUPTA</text>
+</svg>

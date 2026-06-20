@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <!-- Nav icon — Concept 1: interlocking SG strokes -->
+  <defs>
+    <linearGradient id="ng1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="ng2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="72" height="72" rx="16" fill="none" stroke="url(#ng1)" stroke-width="1.5" opacity="0.2"/>
+  <!-- S stroke -->
+  <path d="M 24,24 C 24,18 30,14 38,14 C 46,14 52,18 52,24 C 52,30 46,34 38,36 C 30,38 24,42 24,48 C 24,54 30,58 38,58"
+        fill="none" stroke="url(#ng1)" stroke-width="6" stroke-linecap="round"/>
+  <!-- G stroke -->
+  <path d="M 60,32 C 60,20 52,14 44,14 M 60,32 L 60,56 C 60,66 52,72 44,72 C 36,72 28,66 28,56"
+        fill="none" stroke="url(#ng2)" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="38" cy="36" r="2.5" fill="#06b6d4" opacity="0.7"/>
+</svg>

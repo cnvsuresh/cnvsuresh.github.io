@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Concept 4: Infinity Loop Monogram — S and G flow into each other as a continuous path -->
+  <defs>
+    <linearGradient id="c4grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="c4grad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="c4glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="92" fill="none" stroke="url(#c4grad)" stroke-width="1.5" opacity="0.12"/>
+  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#c4grad)" stroke-width="0.5" opacity="0.08" stroke-dasharray="4 6"/>
+  <!-- S path — forms left half of infinity -->
+  <path d="M 100,56
+           C 72,56 52,68 52,84
+           C 52,100 72,100 100,100
+           C 128,100 148,100 148,116
+           C 148,132 128,144 100,144"
+        fill="none" stroke="url(#c4grad)" stroke-width="8" stroke-linecap="round" filter="url(#c4glow)"/>
+  <!-- G overlay — right hook that completes the form -->
+  <path d="M 100,56
+           C 128,56 148,68 148,84
+           L 148,84
+           C 148,68 136,60 124,60"
+        fill="none" stroke="url(#c4grad2)" stroke-width="8" stroke-linecap="round" filter="url(#c4glow)" opacity="0.8"/>
+  <!-- G crossbar -->
+  <line x1="126" y1="84" x2="148" y2="84" stroke="url(#c4grad2)" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <!-- G bottom return -->
+  <path d="M 100,144
+           C 72,144 52,132 52,116
+           L 52,116"
+        fill="none" stroke="url(#c4grad2)" stroke-width="8" stroke-linecap="round" filter="url(#c4glow)" opacity="0.8"/>
+  <!-- Center crossing accent -->
+  <circle cx="100" cy="100" r="4" fill="#8b5cf6" opacity="0.6"/>
+  <circle cx="100" cy="100" r="8" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+  <!-- Corner accent dots -->
+  <circle cx="52" cy="84" r="3" fill="#3b82f6" opacity="0.5"/>
+  <circle cx="148" cy="84" r="3" fill="#06b6d4" opacity="0.5"/>
+  <circle cx="52" cy="116" r="3" fill="#06b6d4" opacity="0.5"/>
+  <circle cx="148" cy="116" r="3" fill="#3b82f6" opacity="0.5"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <polygon points="42,8 72,22 72,52 42,66 12,52 12,22" fill="none" stroke="url(#logoGrad)" stroke-width="2.5"/>
+  <text x="42" y="44" text-anchor="middle" font-family="'Inter','Segoe UI',sans-serif" font-weight="800" font-size="22" fill="url(#logoGrad)">SG</text>
+  <text x="92" y="34" font-family="'Inter','Segoe UI',sans-serif" font-weight="700" font-size="20" fill="#e2e8f0" letter-spacing="1">Suresh Gupta</text>
+  <text x="92" y="56" font-family="'JetBrains Mono','Fira Code',monospace" font-weight="400" font-size="11" fill="#64748b" letter-spacing="0.5">Technical Lead &amp; DevOps Engineer</text>
+</svg>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume — Suresh Gupta</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --blue: #3b82f6;
+      --cyan: #06b6d4;
+      --purple: #6366f1;
+      --dark: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --dim: #64748b;
+      --border: #334155;
+      --success: #10b981;
+    }
+
+    @media print {
+      @page { margin: 8mm 10mm; size: A4; }
+      .no-print { display: none !important; }
+      .print-hide { display: none !important; }
+      body { background: #fff !important; color: #1e293b !important; font-size: 11px !important; line-height: 1.4 !important; }
+      .resume { box-shadow: none !important; border: none !important; max-width: 100% !important; margin: 0 !important; border-radius: 0 !important; }
+
+      /* Compact header */
+      .resume-header { background: #f8fafc !important; padding: 14px 20px 10px !important; gap: 14px !important; }
+      .header-logo img { width: 44px !important; height: 44px !important; }
+      .resume-header h1 { font-size: 1.25rem !important; color: #1e293b !important; -webkit-text-fill-color: #1e293b !important; margin-bottom: 0 !important; }
+      .header-title { font-size: 0.72rem !important; color: #475569 !important; margin-bottom: 6px !important; }
+      .header-contact { gap: 10px !important; }
+      .header-contact a { font-size: 0.68rem !important; color: #475569 !important; }
+
+      /* Compact body */
+      .resume-body { padding: 12px 20px 8px !important; }
+      .resume-section { margin-bottom: 10px !important; }
+      .section-heading { font-size: 0.7rem !important; color: #1e40af !important; border-color: #1e40af !important; padding-bottom: 3px !important; margin-bottom: 8px !important; }
+      .section-heading i { color: #1e40af !important; font-size: 0.7rem !important; }
+
+      /* Summary */
+      .summary-text { font-size: 0.75rem !important; line-height: 1.45 !important; color: #475569 !important; }
+
+      /* Experience — compact */
+      .exp-item { margin-bottom: 10px !important; }
+      .exp-header { margin-bottom: 2px !important; }
+      .exp-title { font-size: 0.82rem !important; color: #1e293b !important; }
+      .exp-company { font-size: 0.72rem !important; color: #3b82f6 !important; margin-bottom: 2px !important; }
+      .exp-date { font-size: 0.62rem !important; color: #64748b !important; background: #f1f5f9 !important; border-color: #e2e8f0 !important; padding: 1px 6px !important; }
+      .exp-tags { margin-bottom: 3px !important; gap: 3px !important; }
+      .tag { font-size: 0.56rem !important; padding: 1px 5px !important; background: #eff6ff !important; color: #1e40af !important; border-color: #bfdbfe !important; }
+      .exp-details li { font-size: 0.72rem !important; color: #475569 !important; margin-bottom: 1px !important; padding-left: 10px !important; }
+      .exp-details li::before { color: #3b82f6 !important; font-size: 0.65rem !important; }
+
+      /* Skills — inline compact */
+      .skills-grid { gap: 8px !important; }
+      .skill-group h4 { font-size: 0.72rem !important; color: #1e293b !important; margin-bottom: 4px !important; }
+      .skill-group h4 i { font-size: 0.65rem !important; }
+      .skill-tags { gap: 3px !important; }
+      .skill-tag { font-size: 0.65rem !important; padding: 2px 8px !important; background: #f1f5f9 !important; color: #475569 !important; border-color: #e2e8f0 !important; }
+
+      /* Education — single line each */
+      .edu-grid { gap: 2px !important; }
+      .edu-item { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+      .edu-item h4 { font-size: 0.75rem !important; color: #1e293b !important; margin-right: 4px; }
+      .edu-item p { font-size: 0.68rem !important; color: #3b82f6 !important; margin: 0 !important; }
+      .edu-item span { font-size: 0.65rem !important; color: #64748b !important; }
+
+      /* Compact footer */
+      .resume-footer { padding: 6px 20px !important; font-size: 0.6rem !important; }
+      a { color: #3b82f6 !important; }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .download-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .download-bar a.back {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+    .download-bar a.back:hover { color: var(--blue); }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .download-btn:hover { background: #2563eb; transform: translateY(-1px); }
+
+    .resume {
+      max-width: 900px;
+      margin: 80px auto 40px;
+      background: #111827;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+    }
+
+    .resume-header {
+      background: linear-gradient(135deg, var(--dark), #1a2332);
+      padding: 48px 48px 36px;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-logo img { width: 72px; height: 72px; }
+    .header-info { flex: 1; }
+    .resume-header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--text), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2px;
+    }
+    .header-title {
+      font-size: 1rem;
+      color: var(--cyan);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .header-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .header-contact a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s;
+    }
+    .header-contact a:hover { color: var(--blue); }
+
+    .resume-body { padding: 40px 48px; }
+
+    .section-heading {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--blue);
+      border-bottom: 2px solid var(--blue);
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-heading i { font-size: 0.9rem; }
+
+    .resume-section { margin-bottom: 36px; }
+    .resume-section:last-child { margin-bottom: 0; }
+
+    .summary-text {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .exp-item { margin-bottom: 28px; }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+    .exp-title { font-size: 1.02rem; font-weight: 700; color: var(--text); }
+    .exp-company { font-size: 0.88rem; color: var(--blue); font-weight: 500; margin-bottom: 6px; }
+    .exp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--dim);
+      background: var(--dark);
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--blue);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .exp-details { list-style: none; }
+    .exp-details li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 4px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .exp-details li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+    }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .skill-group h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+    .skill-group h4 i { color: var(--blue); margin-right: 8px; font-size: 0.85rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag {
+      font-size: 0.8rem;
+      padding: 5px 14px;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+    }
+
+    .edu-grid { display: flex; flex-direction: column; gap: 16px; }
+    .edu-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+    .edu-item p { font-size: 0.85rem; color: var(--blue); margin-bottom: 2px; }
+    .edu-item span { font-size: 0.78rem; color: var(--dim); }
+
+    .cert-list { display: flex; flex-direction: column; gap: 8px; }
+    .cert-item { font-size: 0.88rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+    .cert-item i { color: var(--success); font-size: 0.8rem; }
+
+    .resume-footer {
+      text-align: center;
+      padding: 20px 48px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--dim);
+    }
+
+    @media (max-width: 640px) {
+      .resume-header { flex-direction: column; padding: 32px 24px; text-align: center; }
+      .header-contact { justify-content: center; }
+      .resume-body { padding: 28px 24px; }
+      .resume-footer { padding: 16px 24px; }
+      .exp-header { flex-direction: column; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="download-bar no-print">
+    <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    <button class="download-btn" onclick="window.print()">
+      <i class="fas fa-download"></i> Download PDF
+    </button>
+  </div>
+
+  <div class="resume">
+    <div class="resume-header">
+      <div class="header-logo">
+        <img src="assets/images/logo-concept-2.svg" alt="SG Logo" />
+      </div>
+      <div class="header-info">
+        <h1>Kotha C N Venkata Suresh Gupta</h1>
+        <p class="header-title">Technical Project Manager &amp; Senior DevOps Engineer | Cloud-Native Automation | Scalable Microservices Architect</p>
+        <div class="header-contact">
+          <a href="tel:+919030410400"><i class="fas fa-phone"></i> +91 9030410400</a>
+          <a href="mailto:cnvsuresh.job@gmail.com"><i class="fas fa-envelope"></i> cnvsuresh.job@gmail.com</a>
+          <a href="https://www.linkedin.com/in/cnvsuresh/" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/cnvsuresh</a>
+          <a><i class="fas fa-map-marker-alt"></i> Bangalore, India</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-body">
+
+      <!-- Summary -->
+      <div class="resume-section">
+        <h3 class="section-heading"><i class="fas fa-user"></i> Professional Summary</h3>
+        <p class="summary-text">
+          Results-driven Technical Project Manager and DevOps Engineer with <strong id="resumeYears">10</strong>+ years of experience building scalable, cloud-native solutions. Expertise spans CI/CD automation, Kubernetes orchestration, and cross-functional project delivery. Proven ability to create reproducible workflows, audit-friendly systems, and collaborative engineering environments that accelerate innovation across e-commerce, mobility, OTT, fintech, and enterprise domains.
+        </p>
+      </div>
+
+      <!-- Experience -->
+      <div class="resume-section">
+        <h3 class="section-heading"><i class="fas fa-briefcase"></i> Professional Experience</h3>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div><div class="exp-title">Technical Project Manager</div><div class="exp-company">Live Smart Application — via Divum Corporate Services</div></div>
+            <span class="exp-date">May 2026 – Present</span>
+          </div>
+          <div class="exp-tags"><span class="tag">AWS</span><span class="tag">Payments</span><span class="tag">Wallet</span><span class="tag">Node.js</span></div>
+          <ul class="exp-details">
+            <li>Leading end-to-end project delivery for a Paytm-like fintech application on AWS</li>
+            <li>Managing mobile recharge, wallet integration, and payment flow features</li>
+            <li>Coordinating cross-functional teams for sprint planning and on-time delivery</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div><div class="exp-title">DevOps Manager</div><div class="exp-company">Relias, Germany — via Divum Corporate Services</div></div>
+            <span class="exp-date">Jul 2025 – Present</span>
+          </div>
+          <div class="exp-tags"><span class="tag">Azure</span><span class="tag">AKS</span><span class="tag">Terraform</span><span class="tag">GitHub Actions</span></div>
+          <ul class="exp-details">
+            <li>Managing Azure Cloud Services and AKS clusters using Terraform &amp; Terragrunt</li>
+            <li>Developing CI/CD workflows, monitoring, and cost optimization strategies</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div><div class="exp-title">Senior Engineer (T&amp;M)</div><div class="exp-company">Amazon — via Divum Corporate Services</div></div>
+            <span class="exp-date">Jun 2024 – Jul 2025</span>
+          </div>
+          <div class="exp-tags"><span class="tag">Java</span><span class="tag">Scala</span><span class="tag">AWS</span></div>
+          <ul class="exp-details">
+            <li>Enhanced mission-critical applications; optimized API performance for high availability</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div><div class="exp-title">Technical Project Lead</div><div class="exp-company">Bosch Mobility Marketplace — via Divum Corporate Services</div></div>
+            <span class="exp-date">Dec 2021 – Jun 2024</span>
+          </div>
+          <div class="exp-tags"><span class="tag">Java</span><span class="tag">Azure</span><span class="tag">Microservices</span></div>
+          <ul class="exp-details">
+            <li>Led backend development for a digital mobility marketplace on Azure</li>
+            <li>Reduced partner onboarding time by 30% through process automation</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div><div class="exp-title">Backend Developer</div><div class="exp-company">Multiple Projects — Divum Corporate Services (Eros Now, MYn, Internet Saathi, GavaGives, Docpanel)</div></div>
+            <span class="exp-date">Oct 2015 – Nov 2021</span>
+          </div>
+          <div class="exp-tags"><span class="tag">Java</span><span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">Blockchain</span></div>
+          <ul class="exp-details">
+            <li>Built OTT streaming backend supporting millions of concurrent users (Eros Now)</li>
+            <li>Reduced platform load times by 40% for a social media application (MYn)</li>
+            <li>Developed blockchain-powered donation platform with transparent fundraising (GavaGives)</li>
+            <li>Built rural digital literacy survey platform with Tata Trusts &amp; Google (Internet Saathi)</li>
+          </ul>
+        </div>
+
+        <div class="exp-item print-hide">
+          <div class="exp-header">
+            <div><div class="exp-title">Software Developer</div><div class="exp-company">Early Startup Experience</div></div>
+            <span class="exp-date">Sep 2014 – Oct 2015</span>
+          </div>
+          <ul class="exp-details">
+            <li>Gained foundational full-stack experience building features from the ground up</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="resume-section">
+        <h3 class="section-heading"><i class="fas fa-cogs"></i> Skills</h3>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h4><i class="fas fa-code"></i> Programming</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Java</span><span class="skill-tag">Python</span><span class="skill-tag">Node.js</span><span class="skill-tag">Scala</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h4><i class="fas fa-cloud"></i> Cloud &amp; DevOps</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">AWS</span><span class="skill-tag">Azure</span><span class="skill-tag">GCP</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Docker</span><span class="skill-tag">Terraform</span><span class="skill-tag">CI/CD</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h4><i class="fas fa-database"></i> Databases</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">MySQL</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">MSSQL</span><span class="skill-tag">Redis</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h4><i class="fas fa-user-tie"></i> Leadership</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Project Management</span><span class="skill-tag">Agile/Scrum</span><span class="skill-tag">Team Mentoring</span><span class="skill-tag">Prompt Engineering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="resume-section">
+        <h3 class="section-heading"><i class="fas fa-graduation-cap"></i> Education</h3>
+        <div class="edu-grid">
+          <div class="edu-item">
+            <h4>Master of Computer Applications (MCA)</h4>
+            <p>Sri Vasavi Engineering College, Tadepalligudem</p>
+            <span>Oct 2011 – Oct 2014 | Grade: A</span>
+          </div>
+          <div class="edu-item print-hide">
+            <h4>Bachelor of Science (B.Sc.), Mathematics</h4>
+            <p>Government Autonomous College</p>
+            <span>2008 – 2011 | Grade: A</span>
+          </div>
+          <div class="edu-item print-hide">
+            <h4>High School, Mathematics</h4>
+            <p>Govt High School, Nidadavolu</p>
+            <span>2005 – 2006 | Grade: A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications (hidden in PDF) -->
+      <div class="resume-section print-hide">
+        <h3 class="section-heading"><i class="fas fa-certificate"></i> Certifications &amp; Focus Areas</h3>
+        <div class="cert-list">
+          <div class="cert-item"><i class="fas fa-check-circle"></i> DevOps Automation &amp; CI/CD Pipeline Design</div>
+          <div class="cert-item"><i class="fas fa-check-circle"></i> Cloud Infrastructure (Azure, AWS, Kubernetes)</div>
+          <div class="cert-item"><i class="fas fa-check-circle"></i> Microservices Architecture &amp; API Design</div>
+          <div class="cert-item"><i class="fas fa-check-circle"></i> Project Management &amp; Team Leadership</div>
+          <div class="cert-item"><i class="fas fa-check-circle"></i> Prompt Engineering &amp; AI Workflow Design</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="resume-footer">
+      &copy; <span id="resumeFooterYear">2026</span> Suresh Gupta | Generated from portfolio — <a href="index.html" style="color: var(--blue);">sureshgupta.dev</a>
+    </div>
+  </div>
+
+  <script>
+    const CAREER_START = new Date(2015, 9);
+    const now = new Date();
+    const years = Math.floor((now - CAREER_START) / (365.25 * 24 * 60 * 60 * 1000));
+    document.getElementById('resumeYears').textContent = years;
+    document.getElementById('resumeFooterYear').textContent = now.getFullYear();
+  </script>
+</body>
+</html>

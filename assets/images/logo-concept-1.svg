@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Concept 1: Interlocking Geometric SG — Letters merge into one continuous shape -->
+  <defs>
+    <linearGradient id="c1grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="c1grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="c1shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#3b82f6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- Outer rounded square frame -->
+  <rect x="10" y="10" width="180" height="180" rx="40" fill="none" stroke="url(#c1grad1)" stroke-width="3" opacity="0.2"/>
+  <!-- S shape — thick geometric stroke -->
+  <path d="M 58,60 C 58,48 70,40 88,40 C 106,40 118,48 118,60 C 118,72 106,78 88,82 C 70,86 58,92 58,104 C 58,116 70,124 88,124"
+        fill="none" stroke="url(#c1grad1)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" filter="url(#c1shadow)"/>
+  <!-- G shape — overlapping, shifted right -->
+  <path d="M 142,76 C 142,54 128,40 108,40 M 142,76 L 142,124 C 142,146 128,160 108,160 C 88,160 74,146 74,124 L 74,116"
+        fill="none" stroke="url(#c1grad2)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" filter="url(#c1shadow)" opacity="0.85"/>
+  <!-- Accent dot at intersection -->
+  <circle cx="88" cy="82" r="5" fill="#06b6d4" opacity="0.8"/>
+  <circle cx="108" cy="40" r="5" fill="#3b82f6" opacity="0.8"/>
+</svg>
