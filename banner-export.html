@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Export LinkedIn Banner as JPEG</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0f1c; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; padding: 40px; text-align: center; }
+    h1 { font-size: 1.5rem; margin-bottom: 8px; }
+    p.sub { color: #64748b; margin-bottom: 32px; font-size: 0.9rem; }
+    .preview { max-width: 100%; border: 1px solid #1e293b; border-radius: 8px; margin: 0 auto 24px; overflow: hidden; }
+    .preview svg { width: 100%; height: auto; display: block; }
+    canvas { display: none; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; background: #3b82f6; color: #fff;
+      border: none; border-radius: 999px; font-size: 1rem;
+      font-weight: 600; cursor: pointer; transition: all 0.3s;
+    }
+    .btn:hover { background: #2563eb; transform: translateY(-2px); }
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .years-control {
+      text-align: left;
+      background: #111827;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 16px 24px;
+    }
+    .years-control label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .years-auto {
+      font-size: 0.78rem;
+      color: #10b981;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .years-input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .years-input-row input {
+      width: 80px;
+      padding: 8px 12px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      text-align: center;
+      outline: none;
+    }
+    .years-input-row input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    }
+    .years-hint {
+      font-size: 0.7rem;
+      color: #475569;
+    }
+    .info { margin-top: 20px; color: #64748b; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+  <h1>LinkedIn Banner Export</h1>
+  <p class="sub">1584 x 396px — LinkedIn recommended background photo size</p>
+
+  <div class="preview" id="svgContainer">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396" id="bannerSvg">
+      <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#070b14"/>
+          <stop offset="100%" stop-color="#0f172a"/>
+        </linearGradient>
+        <linearGradient id="gr1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#3b82f6"/>
+          <stop offset="50%" stop-color="#6366f1"/>
+          <stop offset="100%" stop-color="#06b6d4"/>
+        </linearGradient>
+        <linearGradient id="gr2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#06b6d4"/>
+          <stop offset="100%" stop-color="#3b82f6"/>
+        </linearGradient>
+        <linearGradient id="nameGr" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#e2e8f0"/>
+          <stop offset="70%" stop-color="#93c5fd"/>
+        </linearGradient>
+      </defs>
+      <rect width="1584" height="396" fill="url(#bg)"/>
+      <g transform="translate(80, 40)" opacity="0.045" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="0" y="0" width="40" height="28" rx="3"/><line x1="8" y1="34" x2="32" y2="34"/><line x1="16" y1="28" x2="16" y2="34"/><line x1="24" y1="28" x2="24" y2="34"/><line x1="6" y1="8" x2="20" y2="8"/><line x1="6" y1="14" x2="16" y2="14"/>
+      </g>
+      <g transform="translate(50, 160)" opacity="0.04" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round">
+        <rect x="0" y="0" width="36" height="14" rx="3"/><rect x="0" y="18" width="36" height="14" rx="3"/><rect x="0" y="36" width="36" height="14" rx="3"/><circle cx="28" cy="7" r="2"/><circle cx="28" cy="25" r="2"/><circle cx="28" cy="43" r="2"/>
+      </g>
+      <g transform="translate(280, 30)" opacity="0.04" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10,32 C4,32 0,28 0,22 C0,16 4,12 10,12 C10,5 16,0 24,0 C32,0 38,5 38,12 C44,12 48,16 48,22 C48,28 44,32 38,32 Z"/>
+      </g>
+      <g transform="translate(160, 290)" opacity="0.04" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2,0 L2,36 C2,36 10,32 20,32 C30,32 38,36 38,36 L38,0 C38,0 30,4 20,4 C10,4 2,0 2,0 Z"/><line x1="20" y1="4" x2="20" y2="32"/>
+      </g>
+      <g transform="translate(420, 140)" opacity="0.035" fill="none" stroke="#6366f1" stroke-width="1.8">
+        <circle cx="16" cy="16" r="6"/><path d="M16,2 L16,6 M16,26 L16,30 M2,16 L6,16 M26,16 L30,16 M6,6 L9,9 M23,23 L26,26 M26,6 L23,9 M9,23 L6,26"/>
+      </g>
+      <g transform="translate(320, 280)" opacity="0.04" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="0" y="0" width="44" height="32" rx="4"/><line x1="0" y1="8" x2="44" y2="8"/><polyline points="8,16 14,20 8,24"/><line x1="18" y1="24" x2="30" y2="24"/>
+      </g>
+      <g transform="translate(460, 50)" opacity="0.04" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="12,0 0,16 12,32"/><polyline points="28,0 40,16 28,32"/><line x1="24" y1="0" x2="16" y2="32"/>
+      </g>
+      <g transform="translate(1440, 50)" opacity="0.035" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18,2 L34,10 L34,22 C34,30 26,36 18,38 C10,36 2,30 2,22 L2,10 Z"/><polyline points="10,20 16,26 28,14"/>
+      </g>
+      <g transform="translate(1500, 140)" opacity="0.04" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20,2 C20,2 30,6 30,18 L22,26 L10,26 L2,18 C2,6 12,2 20,2 Z"/><circle cx="16" cy="14" r="3"/><line x1="6" y1="30" x2="10" y2="26"/><line x1="22" y1="26" x2="26" y2="30"/>
+      </g>
+      <g transform="translate(1380, 280)" opacity="0.035" fill="none" stroke="#3b82f6" stroke-width="2">
+        <ellipse cx="18" cy="6" rx="18" ry="6"/><path d="M0,6 L0,34 C0,37 8,40 18,40 C28,40 36,37 36,34 L36,6"/><path d="M0,16 C0,19 8,22 18,22 C28,22 36,19 36,16" opacity="0.5"/>
+      </g>
+      <g transform="translate(500, 310)" opacity="0.035" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round">
+        <path d="M2,12 C6,6 14,2 22,2 C30,2 38,6 42,12"/><path d="M8,18 C12,14 16,12 22,12 C28,12 32,14 36,18"/><path d="M14,24 C16,22 18,20 22,20 C26,20 28,22 30,24"/><circle cx="22" cy="30" r="2" fill="#06b6d4"/>
+      </g>
+      <g transform="translate(540, 170)" opacity="0.03" fill="none" stroke="#6366f1" stroke-width="1.5">
+        <rect x="8" y="8" width="24" height="24" rx="3"/><line x1="14" y1="0" x2="14" y2="8"/><line x1="20" y1="0" x2="20" y2="8"/><line x1="26" y1="0" x2="26" y2="8"/><line x1="14" y1="32" x2="14" y2="40"/><line x1="20" y1="32" x2="20" y2="40"/><line x1="26" y1="32" x2="26" y2="40"/><line x1="0" y1="14" x2="8" y2="14"/><line x1="0" y1="20" x2="8" y2="20"/><line x1="0" y1="26" x2="8" y2="26"/><line x1="32" y1="14" x2="40" y2="14"/><line x1="32" y1="20" x2="40" y2="20"/><line x1="32" y1="26" x2="40" y2="26"/>
+      </g>
+      <g transform="translate(200, 340)" opacity="0.04" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round">
+        <circle cx="6" cy="6" r="4"/><circle cx="6" cy="30" r="4"/><circle cx="30" cy="6" r="4"/><line x1="6" y1="10" x2="6" y2="26"/><path d="M26,6 C18,6 6,10 6,18"/>
+      </g>
+      <g transform="translate(1520, 300)" opacity="0.04" fill="none" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="16,0 4,18 18,18 6,36"/>
+      </g>
+      <circle cx="300" cy="198" r="250" fill="#3b82f6" opacity="0.015"/>
+      <circle cx="1300" cy="198" r="300" fill="#06b6d4" opacity="0.02"/>
+      <circle cx="800" cy="100" r="180" fill="#6366f1" opacity="0.012"/>
+      <g transform="translate(640, 68) scale(2.8)">
+        <rect x="4" y="4" width="72" height="72" rx="16" fill="none" stroke="url(#gr1)" stroke-width="1.2" opacity="0.25"/>
+        <path d="M 24,24 C 24,18 30,14 38,14 C 46,14 52,18 52,24 C 52,30 46,34 38,36 C 30,38 24,42 24,48 C 24,54 30,58 38,58" fill="none" stroke="url(#gr1)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M 60,32 C 60,20 52,14 44,14 M 60,32 L 60,56 C 60,66 52,72 44,72 C 36,72 28,66 28,56" fill="none" stroke="url(#gr2)" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+        <circle cx="38" cy="36" r="2" fill="#06b6d4" opacity="0.7"/>
+      </g>
+      <text x="890" y="125" font-family="'Inter','Segoe UI',sans-serif" font-weight="800" font-size="52" fill="url(#nameGr)">Suresh Gupta</text>
+      <text x="890" y="152" font-family="'Inter','Segoe UI',sans-serif" font-weight="400" font-size="14" fill="#64748b" letter-spacing="1.5">Kotha C N Venkata Suresh Gupta</text>
+      <text x="890" y="188" font-family="'Inter','Segoe UI',sans-serif" font-weight="500" font-size="16" fill="#94a3b8">Technical Project Manager  &amp;  Senior DevOps Engineer</text>
+      <text x="890" y="214" font-family="'Inter','Segoe UI',sans-serif" font-weight="400" font-size="13" fill="#64748b" id="subtitleLine">Cloud-Native Automation  |  Kubernetes &amp; Azure/AWS  |  Microservices Architect  |  10+ Years</text>
+      <g transform="translate(890, 236)">
+        <rect x="0" y="0" width="56" height="26" rx="13" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="0.8" opacity="0.6"/><text x="28" y="17" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#60a5fa">Java</text>
+        <rect x="66" y="0" width="72" height="26" rx="13" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="0.8" opacity="0.6"/><text x="102" y="17" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#60a5fa">Python</text>
+        <rect x="148" y="0" width="76" height="26" rx="13" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="0.8" opacity="0.6"/><text x="186" y="17" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#60a5fa">Node.js</text>
+        <rect x="234" y="0" width="56" height="26" rx="13" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="0.8" opacity="0.6"/><text x="262" y="17" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#a5b4fc">AWS</text>
+        <rect x="300" y="0" width="62" height="26" rx="13" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="0.8" opacity="0.6"/><text x="331" y="17" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#a5b4fc">Azure</text>
+        <rect x="372" y="0" width="52" height="26" rx="13" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="0.8" opacity="0.6"/><text x="398" y="17" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#67e8f9">K8s</text>
+        <rect x="434" y="0" width="90" height="26" rx="13" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="0.8" opacity="0.6"/><text x="479" y="17" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#67e8f9">Terraform</text>
+      </g>
+      <text x="890" y="316" font-family="'JetBrains Mono',monospace" font-size="13" fill="#334155" letter-spacing="1">&lt;/&gt;  building scalable systems that power millions</text>
+      <g opacity="0.035" stroke="#06b6d4" stroke-width="1" fill="none">
+        <line x1="1400" y1="0" x2="1400" y2="396"/><line x1="1500" y1="0" x2="1500" y2="396"/><line x1="1300" y1="80" x2="1584" y2="80"/><line x1="1350" y1="198" x2="1584" y2="198"/><line x1="1300" y1="316" x2="1584" y2="316"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="controls">
+    <div class="years-control">
+      <label>Years of Experience:</label>
+      <span class="years-auto">Auto-calculated: <strong id="yearsDisplay">10</strong>+ years (from Oct 2015)</span>
+      <div class="years-input-row">
+        <input type="number" id="yearsInput" min="1" max="50" placeholder="Auto" />
+        <span class="years-hint">Leave empty for auto, or type a custom number</span>
+      </div>
+    </div>
+    <button class="btn" id="downloadBtn">Download as JPEG</button>
+  </div>
+
+  <p class="info">JPEG at 1584x396 (high quality 0.95). Upload to LinkedIn → Profile → Edit background photo.</p>
+
+  <canvas id="canvas" width="1584" height="396"></canvas>
+
+  <script>
+    const CAREER_START = new Date(2015, 9);
+    const careerYears = Math.floor((new Date() - CAREER_START) / (365.25 * 24 * 60 * 60 * 1000));
+
+    function updateYearsInSvg(years) {
+      const el = document.getElementById('subtitleLine');
+      el.textContent = `Cloud-Native Automation  |  Kubernetes & Azure/AWS  |  Microservices Architect  |  ${years}+ Years`;
+      document.getElementById('yearsDisplay').textContent = years;
+    }
+
+    updateYearsInSvg(careerYears);
+
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const customYears = document.getElementById('yearsInput').value;
+      updateYearsInSvg(customYears || careerYears);
+
+      const svgEl = document.getElementById('bannerSvg');
+      const svgData = new XMLSerializer().serializeToString(svgEl);
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+
+      img.onload = () => {
+        ctx.fillStyle = '#070b14';
+        ctx.fillRect(0, 0, 1584, 396);
+        ctx.drawImage(img, 0, 0, 1584, 396);
+        URL.revokeObjectURL(url);
+
+        const link = document.createElement('a');
+        link.download = 'suresh-gupta-linkedin-banner.jpg';
+        link.href = canvas.toDataURL('image/jpeg', 0.95);
+        link.click();
+      };
+
+      img.src = url;
+    });
+
+    document.getElementById('yearsInput').addEventListener('input', (e) => {
+      updateYearsInSvg(e.target.value || careerYears);
+    });
+  </script>
+</body>
+</html>
